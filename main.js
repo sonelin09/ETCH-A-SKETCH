@@ -1,3 +1,14 @@
+const askText = document.createElement('h1');
+askText.innerText = '請輸入想要幾X幾的畫布：';
+document.body.appendChild(askText);
+
+const askDiv = document.createElement('div');
+document.body.appendChild(askDiv);
+const enterBox = document.createElement('input');
+askDiv.appendChild(enterBox);
+const enterBtn = document.createElement('button');
+askDiv.appendChild(enterBtn);
+
 //一個容器用來裝需要的divs
 let container = document.createElement('div');
 container.setAttribute('class', 'container');
@@ -19,5 +30,5 @@ for (k = 0; k < cells.length; k++) {
 //改顏色的函式
 function changeColor(e) {
     console.log(e);
-    e.target.style.backgroundColor = 'blue';
+    e.target.style.backgroundColor = 'skyblue';
 }

@@ -10,9 +10,13 @@ askDiv.appendChild(enterBox);
 const enterBtn = document.createElement('button');
 enterBtn.innerText = '確定';
 askDiv.appendChild(enterBtn);
+const clearBtn = document.createElement('button');
+clearBtn.innerText = '清除';
+askDiv.appendChild(clearBtn);
+
 
 enterBtn.onclick = getNumber;
-
+clearBtn.onclick = clear;
 
 //一個容器用來裝需要的divs
 let container = document.createElement('div');
@@ -28,7 +32,7 @@ document.body.appendChild(container);
 
 //判斷輸入框的值
 function getNumber() {
-    if(enterBox.value %1 === 0 && enterBox.value != ''){
+    if(enterBox.value %1 === 0 && enterBox.value != '' && enterBox.value <= 64){
         console.log('整數');
         container.style = `grid-template-columns: repeat(${enterBox.value}, 1fr)`;
         for (i = 0; i< enterBox.value*enterBox.value; i++) {
@@ -42,8 +46,10 @@ function getNumber() {
             cells[k].addEventListener('mouseenter', changeColor)
         }
 
-    }else {
-        console.log('不是整數');
+    }else if (enterBox.value > 64){
+        alert('請輸入小於64的數字');
+    }else{
+        alert('請輸入數字');
     }
 }
 
@@ -52,4 +58,14 @@ function getNumber() {
 function changeColor(e) {
     console.log(e);
     e.target.style.backgroundColor = 'skyblue';
+}
+
+//清除現有畫布函式
+function clear() {
+    let cells = document.getElementsByClassName('grid-item');
+    while(container.firstChild){
+        container.removeChild(container.firstChild);
+    }
+    enterBox.innerText = '';
+    enterBox.value = '';
 }

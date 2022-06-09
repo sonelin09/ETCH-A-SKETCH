@@ -34,10 +34,10 @@ document.body.appendChild(container);
 function getNumber() {
     if(enterBox.value %1 === 0 && enterBox.value != '' && enterBox.value <= 64){
         console.log('整數');
-        container.style = `grid-template-columns: repeat(${enterBox.value}, 1fr)`;
+        container.style = `grid-template-columns: repeat(${enterBox.value}, ${100/enterBox.value}%)`;
         for (i = 0; i< enterBox.value*enterBox.value; i++) {
             let cell = document.createElement('div');
-            cell.innerText = (i + 1);
+            //cell.innerText = (i + 1);
             container.appendChild(cell).className = 'grid-item';
         }
 

@@ -11,12 +11,15 @@ const enterBtn = document.createElement('button');
 enterBtn.innerText = '確定';
 askDiv.appendChild(enterBtn);
 const clearBtn = document.createElement('button');
-clearBtn.innerText = '清除';
+clearBtn.innerText = '清除畫布';
 askDiv.appendChild(clearBtn);
-
+const clearPaper = document.createElement('button');
+clearPaper.innerHTML = '歸零'
+askDiv.appendChild(clearPaper);
 
 enterBtn.onclick = getNumber;
 clearBtn.onclick = clear;
+clearPaper.onclick = toWhite;
 
 //一個容器用來裝需要的divs
 let container = document.createElement('div');
@@ -37,7 +40,7 @@ function getNumber() {
         container.style = `grid-template-columns: repeat(${enterBox.value}, ${100/enterBox.value}%)`;
         for (i = 0; i< enterBox.value*enterBox.value; i++) {
             let cell = document.createElement('div');
-            //cell.innerText = (i + 1);
+            //cell.innerText = (i + 1); 如果cell裡有文，就會導致格子變形
             container.appendChild(cell).className = 'grid-item';
         }
 
@@ -68,4 +71,12 @@ function clear() {
     }
     enterBox.innerText = '';
     enterBox.value = '';
+}
+
+//畫布回復空白
+function toWhite() {
+    let cells = document.getElementsByClassName('grid-item');
+    for (p = 0; p < enterBox.value*enterBox.value; p++){
+        cells[p].style.backgroundColor = 'white';
+    }
 }

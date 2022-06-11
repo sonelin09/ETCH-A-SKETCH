@@ -46,7 +46,7 @@ function getNumber() {
 
         let cells = document.getElementsByClassName('grid-item');
         for (k = 0; k < cells.length; k++) {
-            cells[k].addEventListener('mouseenter', changeColor)
+            cells[k].addEventListener('click', changeColor)
         }
 
     }else if (enterBox.value > 64){
